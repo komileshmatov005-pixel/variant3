@@ -27,7 +27,6 @@
         #envelope {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
             background: var(--primary-blue);
-            /* Ko'k rang bilan gulli fonni birlashtirish */
             background-image: linear-gradient(rgba(43, 58, 140, 0.7), rgba(43, 58, 140, 0.7)), url('flowers_bg.png');
             background-size: cover;
             background-position: center;
@@ -70,7 +69,9 @@
         }
 
         .couple-icon { width: 140px; margin-bottom: 20px; }
-        .restaurant-icon { width: 120px; margin: 25px 0; } /* Kattalashtirilgan to'yxona */
+        
+        /* RESTORAN IKONKASI KATTALASHTIRILDI */
+        .restaurant-icon { width: 160px; height: auto; margin: 25px 0; display: inline-block; } 
         
         .names { font-family: 'Playfair Display', serif; font-size: 3.2rem; color: var(--primary-blue); margin: 10px 0; }
         
@@ -139,21 +140,21 @@
                     "Hayotimizning eng go'zal damlarini siz azizlar bilan birga baham ko'rishdan mamnunmiz."
                 </div>
 
-                <div class="map-section" data-aos="fade-up">
-                    <img src="restaurant_icon.png" class="restaurant-icon">
+                <div class="map-section">
+                    <img src="restaurant_icon.png" class="restaurant-icon" data-aos="zoom-in">
                     <h3 id="restoran-name" style="color: var(--primary-blue); margin-bottom: 20px;">"IDEAL SS" RESTORANI</h3>
                     <a href="https://maps.app.goo.gl/CpZnA8ug8iPZjGwt7" class="btn btn-google">GOOGLE MAPS</a>
                     <a href="https://yandex.uz/maps/org/8650108130/" class="btn btn-yandex">YANDEX XARITA</a>
                 </div>
 
-                <div class="timer-grid" data-aos="zoom-in">
+                <div class="timer-grid">
                     <div class="t-item"><span id="d">00</span><small id="l-d">Kun</small></div>
                     <div class="t-item"><span id="h">00</span><small id="l-h">Soat</small></div>
                     <div class="t-item"><span id="m">00</span><small id="l-m">Min</small></div>
                 </div>
 
-                <div class="rsvp-section" data-aos="fade-up">
-                    <h3 id="rsvp-t" style="font-family: 'Dancing Script'; font-size: 1.8rem; color: var(--primary-blue);">Tashrifni tasdiqlang</h3>
+                <div class="rsvp-section">
+                    <h3 id="rsvp-t" style="font-family: 'Dancing Script'; font-size: 1.6rem; color: var(--primary-blue);">Tashrifni tasdiqlang</h3>
                     <form id="wedding-form">
                         <input type="text" name="ism" id="guest-name" placeholder="Ismingiz" required class="input-field">
                         <div class="options">
