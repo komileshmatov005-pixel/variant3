@@ -19,188 +19,217 @@
             margin: 0; padding: 0; 
             font-family: 'Montserrat', sans-serif; 
             background: var(--soft-bg);
-            scroll-behavior: smooth;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        .flower-bg {
-            background-image: url('1000119184.jpg'); /* Fon rasmi */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            min-height: 100vh;
-            width: 100%;
-        }
-
+        /* 1. KONVERT - FLOWERS_BG.PNG SHU YERDA */
         #envelope {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
             background: var(--primary-blue);
+            /* Ko'k rang bilan gulli fonni birlashtirish */
+            background-image: linear-gradient(rgba(43, 58, 140, 0.7), rgba(43, 58, 140, 0.7)), url('flowers_bg.png');
+            background-size: cover;
+            background-position: center;
             display: flex; justify-content: center; align-items: center;
             z-index: 9999; transition: 1.2s cubic-bezier(0.7, 0, 0.3, 1);
         }
 
-        .seal-container { text-align: center; cursor: pointer; animation: pulse 2s infinite; }
-        .seal-container img { width: 120px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
+        .seal-container { 
+            text-align: center; cursor: pointer; animation: pulse 2s infinite; 
+            background: rgba(255, 255, 255, 0.15); padding: 35px; border-radius: 50%;
+            backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3);
+        }
+        .seal-container img { width: 120px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.4)); }
 
+        /* TIL ALMASHTIRGICH */
+        .lang-switcher {
+            position: fixed; top: 20px; right: 20px; z-index: 10001;
+            background: rgba(255,255,255,0.9); padding: 5px; border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid var(--gold);
+        }
+        .lang-btn {
+            border: none; background: none; padding: 6px 15px; cursor: pointer;
+            font-weight: 600; font-size: 11px; border-radius: 15px; transition: 0.3s;
+        }
+        .lang-btn.active { background: var(--primary-blue); color: white; }
+
+        /* 2. TAKLIFNOMA - 1000119184.JPG SHU YERDA */
         #content { display: none; }
+        .flower-bg {
+            background-image: url('1000119184.jpg');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            min-height: 100vh; width: 100%;
+        }
         
         .main-card {
-            max-width: 450px; margin: 0 auto; background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(8px); border: 1.5px solid var(--gold);
-            padding: 50px 25px; text-align: center; position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 450px; margin: 0 auto; background: rgba(255, 255, 255, 0.96);
+            padding: 50px 25px; text-align: center; border: 1px solid var(--gold);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            position: relative;
         }
 
-        /* IKONKALAR O'LCHAMI */
         .couple-icon { width: 140px; margin-bottom: 20px; }
-        .restaurant-icon { width: 100px; margin: 20px 0; } /* Kattalashtirilgan to'yxona ikonkasi */
-        .rings-icon { width: 80px; margin-top: 30px; }
-
-        .names { 
-            font-family: 'Playfair Display', serif; font-size: 3rem; 
-            color: var(--primary-blue); margin: 15px 0;
-        }
-
+        .restaurant-icon { width: 120px; margin: 25px 0; } /* Kattalashtirilgan to'yxona */
+        
+        .names { font-family: 'Playfair Display', serif; font-size: 3.2rem; color: var(--primary-blue); margin: 10px 0; }
+        
         .date-box {
             display: inline-block; padding: 15px 35px; border-top: 2px solid var(--gold);
-            border-bottom: 2px solid var(--gold); margin: 25px 0;
-            font-weight: 600; color: var(--primary-blue);
+            border-bottom: 2px solid var(--gold); margin: 20px 0;
+            color: var(--primary-blue); font-weight: 600;
         }
 
-        .invitation-body { 
-            font-family: 'Playfair Display', serif; font-style: italic;
-            line-height: 1.8; color: #444; padding: 10px; font-size: 1.15rem;
-        }
+        .time-text { font-size: 1.3rem; color: var(--gold); font-weight: bold; margin-bottom: 25px; display: block; letter-spacing: 2px; }
 
         .btn {
-            display: block; width: 85%; margin: 12px auto; padding: 16px;
-            border-radius: 30px; text-decoration: none; font-weight: 600;
-            border: 1px solid var(--gold); transition: 0.3s; font-size: 0.9rem;
+            display: block; width: 85%; margin: 12px auto; padding: 18px;
+            border-radius: 35px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s;
         }
         .btn-google { background: var(--primary-blue); color: white; border: none; }
         .btn-yandex { background: #f33e3e; color: white; border: none; }
 
-        /* RSVP (BORAMAN / BORMAYMAN) */
-        .rsvp-section { margin-top: 40px; padding: 30px 20px; background: #f4f7ff; border-radius: 20px; }
-        .input-field { 
-            width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ddd;
-            border-radius: 12px; box-sizing: border-box; font-family: 'Montserrat';
-        }
-        .options { display: flex; gap: 10px; margin-bottom: 20px; }
-        .opt-btn { 
-            flex: 1; padding: 15px; border: 1px solid #ddd; border-radius: 12px; 
-            cursor: pointer; font-size: 13px; font-weight: 600; background: white; transition: 0.3s;
-        }
-        .opt-btn.active { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
-        .submit-btn { 
-            background: var(--gold); color: white; border: none; 
-            width: 100%; padding: 18px; border-radius: 30px; font-weight: bold; 
-            cursor: pointer; font-size: 1rem;
-        }
-
         /* TAYMER */
-        .timer-grid { display: flex; justify-content: center; gap: 15px; margin: 30px 0; }
-        .t-item { background: white; padding: 15px; border-radius: 12px; min-width: 60px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .t-item span { display: block; font-size: 1.6rem; font-weight: bold; color: var(--primary-blue); }
+        .timer-grid { display: flex; justify-content: center; gap: 15px; margin: 35px 0; }
+        .t-item { background: white; padding: 15px; border-radius: 12px; min-width: 70px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .t-item span { display: block; font-size: 1.7rem; font-weight: bold; color: var(--primary-blue); }
+
+        /* RSVP FORM */
+        .rsvp-section { margin-top: 45px; padding: 30px 20px; background: #f9fbff; border-radius: 20px; border: 1px dashed var(--gold); }
+        .input-field { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 12px; box-sizing: border-box; outline: none; }
+        .options { display: flex; gap: 10px; margin-bottom: 20px; }
+        .opt-btn { flex: 1; padding: 15px; border: 1px solid #ddd; border-radius: 12px; cursor: pointer; background: white; transition: 0.3s; font-size: 13px; font-weight: bold; }
+        .opt-btn.active { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
+        .submit-btn { background: var(--primary-blue); color: white; border: none; width: 100%; padding: 18px; border-radius: 35px; font-weight: bold; cursor: pointer; font-size: 1rem; }
 
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
     </style>
 </head>
 <body>
 
+    <div class="lang-switcher">
+        <button class="lang-btn active" onclick="changeLang('uz')">Lotin</button>
+        <button class="lang-btn" onclick="changeLang('cyrillic')">Кирилл</button>
+    </div>
+
     <div id="envelope">
         <div class="seal-container" onclick="openMe()">
             <img src="seal.png" alt="Muhr">
-            <p style="color:white; font-size: 12px; margin-top:15px; letter-spacing: 2px;">OCHISH UCHUN BOSING</p>
+            <p id="tap-text" style="color:white; font-size: 11px; margin-top:15px; letter-spacing: 2px;">OCHISH UCHUN BOSING</p>
         </div>
     </div>
 
     <div id="content" class="flower-bg">
-        <div style="padding: 40px 15px;">
+        <div style="padding: 60px 15px;">
             <div class="main-card" data-aos="zoom-in">
                 
                 <img src="couple_icon.png" class="couple-icon" data-aos="fade-down" data-aos-delay="300">
 
-                <p style="letter-spacing: 3px; font-size: 0.8rem; color: #777;">LUTFAN TASHRIF BUYURING</p>
+                <p id="sub-text" style="letter-spacing: 3px; font-size: 0.8rem; color: #777;">SIZNI TAKLIF ETAMIZ</p>
                 <h1 class="names" data-aos="fade-up" data-aos-delay="500">Komil & ???</h1>
                 
-                <div class="date-box" data-aos="flip-left" data-aos-delay="700">
+                <div class="date-box" data-aos="flip-up" data-aos-delay="700">
                     <span style="font-size: 2.2rem;">27</span><br>
-                    <span>DEKABR | 2026</span>
+                    <span id="month-text">DEKABR | 2026</span>
                 </div>
 
-                <div class="invitation-body" data-aos="fade-up" data-aos-delay="900">
+                <span class="time-text" data-aos="fade-in" data-aos-delay="900">SOAT 18:00 DA</span>
+
+                <div class="invitation-body" id="invitation-text" style="font-family: 'Playfair Display'; font-style: italic; color: #444; margin-bottom: 30px; line-height: 1.8;">
                     "Hayotimizning eng go'zal damlarini siz azizlar bilan birga baham ko'rishdan mamnunmiz."
                 </div>
 
                 <div class="map-section" data-aos="fade-up">
-                    <img src="restaurant_icon.png" class="restaurant-icon" alt="To'yxona">
-                    <h3 style="color: var(--primary-blue); margin-bottom: 20px;">"IDEAL SS" RESTORANI</h3>
-                    <a href="#" class="btn btn-google">GOOGLE MAPS</a>
-                    <a href="#" class="btn btn-yandex">YANDEX XARITA</a>
+                    <img src="restaurant_icon.png" class="restaurant-icon">
+                    <h3 id="restoran-name" style="color: var(--primary-blue); margin-bottom: 20px;">"IDEAL SS" RESTORANI</h3>
+                    <a href="https://maps.app.goo.gl/CpZnA8ug8iPZjGwt7" class="btn btn-google">GOOGLE MAPS</a>
+                    <a href="https://yandex.uz/maps/org/8650108130/" class="btn btn-yandex">YANDEX XARITA</a>
                 </div>
 
                 <div class="timer-grid" data-aos="zoom-in">
-                    <div class="t-item"><span id="d">00</span><small>Kun</small></div>
-                    <div class="t-item"><span id="h">00</span><small>Soat</small></div>
-                    <div class="t-item"><span id="m">00</span><small>Min</small></div>
+                    <div class="t-item"><span id="d">00</span><small id="l-d">Kun</small></div>
+                    <div class="t-item"><span id="h">00</span><small id="l-h">Soat</small></div>
+                    <div class="t-item"><span id="m">00</span><small id="l-m">Min</small></div>
                 </div>
 
                 <div class="rsvp-section" data-aos="fade-up">
-                    <h3 style="font-family: 'Dancing Script'; font-size: 1.8rem; color: var(--primary-blue);">Tashrifni tasdiqlang</h3>
+                    <h3 id="rsvp-t" style="font-family: 'Dancing Script'; font-size: 1.8rem; color: var(--primary-blue);">Tashrifni tasdiqlang</h3>
                     <form id="wedding-form">
-                        <input type="text" name="ism" id="guest-name" placeholder="Ismingiz va familiyangiz" required class="input-field">
-                        
+                        <input type="text" name="ism" id="guest-name" placeholder="Ismingiz" required class="input-field">
                         <div class="options">
                             <div class="opt-btn" id="btn-yes" onclick="setStatus('Boraman', this)">Boraman</div>
                             <div class="opt-btn" id="btn-no" onclick="setStatus('Borolmayman', this)">Borolmayman</div>
                         </div>
-                        
                         <input type="hidden" name="holat" id="guest-status" required>
                         <button type="submit" class="submit-btn" id="send-btn">YUBORISH</button>
                     </form>
-                    <div id="success-msg" style="display:none; color: green; font-weight: bold; margin-top: 20px;">Rahmat! Ma'lumotlaringiz yuborildi.</div>
+                    <div id="success-msg" style="display:none; color: green; font-weight: bold; margin-top: 15px;">Rahmat! Ma'lumot yuborildi.</div>
                 </div>
 
-                <img src="rings.png" class="rings-icon" data-aos="zoom-in">
-                <p style="font-family: 'Dancing Script'; font-size: 1.8rem; color: var(--primary-blue); margin-top: 15px;">Sizni kutib qolamiz!</p>
+                <img src="rings.png" width="80" style="margin-top: 45px;" data-aos="zoom-in">
+                <p id="footer-t" style="font-family: 'Dancing Script'; font-size: 2rem; color: var(--primary-blue); margin-top: 15px;">Sizni kutib qolamiz!</p>
 
             </div>
         </div>
     </div>
 
-    <audio id="muzika" loop preload="auto"><source src="music.mp3" type="audio/mpeg"></audio>
+    <audio id="muzika" loop><source src="music.mp3" type="audio/mpeg"></audio>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Google Sheets Script URL
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxr31odBSGT5ZV5j-4Kuhbqoa7LRqXDbB_iaAv1aimNy7GGciNKM0KdkhjXJhlio2dRXw/exec';
-        
+        const translations = {
+            uz: {
+                tap: "OCHISH UCHUN BOSING", sub: "SIZNI TAKLIF ETAMIZ", month: "DEKABR | 2026", time: "SOAT 18:00 DA",
+                invitation: "Hayotimizning eng go'zal damlarini siz azizlar bilan birga baham ko'rishdan mamnunmiz.",
+                restoran: '"IDEAL SS" RESTORANI', d: "Kun", h: "Soat", m: "Min", rsvp: "Tashrifni tasdiqlang", 
+                ph: "Ismingiz", yes: "Boraman", no: "Borolmayman", send: "YUBORISH", footer: "Sizni kutib qolamiz!"
+            },
+            cyrillic: {
+                tap: "ОЧИШ УЧУН БОСИНГ", sub: "СИЗНИ ТАКЛИФ ЭТАМИЗ", month: "ДЕКАБРЬ | 2026", time: "СОАТ 18:00 ДА",
+                invitation: "Ҳаётимизнинг энг гўзал дамларини сиз азизлар билан бирга баҳам кўришdan мамнунмиз.",
+                restoran: '"IDEAL SS" РЕСТОРАНИ', d: "Кун", h: "Соат", m: "Мин", rsvp: "Ташрифни тасдиқланг",
+                ph: "Исмингиз", yes: "Бораман", no: "Боролмайман", send: "ЮБОРИШ", footer: "Сизни кутиб қоламиз!"
+            }
+        };
+
+        function changeLang(lang) {
+            const t = translations[lang];
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('tap-text').innerText = t.tap;
+            document.getElementById('sub-text').innerText = t.sub;
+            document.getElementById('month-text').innerText = t.month;
+            document.querySelector('.time-text').innerText = t.time;
+            document.getElementById('invitation-text').innerText = t.invitation;
+            document.getElementById('restoran-name').innerText = t.restoran;
+            document.getElementById('l-d').innerText = t.d; document.getElementById('l-h').innerText = t.h; document.getElementById('l-m').innerText = t.m;
+            document.getElementById('rsvp-t').innerText = t.rsvp;
+            document.getElementById('guest-name').placeholder = t.ph;
+            document.getElementById('btn-yes').innerText = t.yes;
+            document.getElementById('btn-no').innerText = t.no;
+            document.getElementById('send-btn').innerText = t.send;
+            document.getElementById('footer-t').innerText = t.footer;
+        }
+
         function setStatus(val, el) {
             document.getElementById('guest-status').value = val;
             document.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
             el.classList.add('active');
         }
 
+        // GOOGLE SHEETS BILAN BOG'LASH
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxr31odBSGT5ZV5j-4Kuhbqoa7LRqXDbB_iaAv1aimNy7GGciNKM0KdkhjXJhlio2dRXw/exec';
         const form = document.getElementById('wedding-form');
         form.addEventListener('submit', e => {
             e.preventDefault();
-            if(!document.getElementById('guest-status').value) {
-                alert("Iltimos, borish-kelishingizni tanlang!");
-                return;
-            }
+            if(!document.getElementById('guest-status').value) { alert("Iltimos, borish-kelishingizni tanlang!"); return; }
             document.getElementById('send-btn').disabled = true;
             document.getElementById('send-btn').innerText = "Yuborilmoqda...";
-
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => {
+                .then(() => {
                     form.style.display = 'none';
                     document.getElementById('success-msg').style.display = 'block';
-                })
-                .catch(error => {
-                    alert('Xatolik yuz berdi!');
-                    document.getElementById('send-btn').disabled = false;
-                });
+                }).catch(() => { alert('Xato!'); document.getElementById('send-btn').disabled = false; });
         });
 
         function openMe() {
